@@ -38,7 +38,7 @@ for i in range(9):
 assets["explosion_anim"] = explosion_anim
 assets["score_font"] = pygame.font.Font('assets/font/PressStart2P.ttf', 28)
 
-class barco(pygame.sprite.Sprite):
+class navio(pygame.sprite.Sprite):
 
     def init(self, groups, assets):
         pygame.sprite.Sprite.init(self)
@@ -81,7 +81,7 @@ class barco(pygame.sprite.Sprite):
             self.assets['pew_sound'].play()
 
     
-class Meteor(pygame.sprite.Sprite):
+class barquinho(pygame.sprite.Sprite):
     def _init_(self, assets):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite._init_(self)
