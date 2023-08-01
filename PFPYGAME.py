@@ -105,3 +105,28 @@ class barquinho(pygame.sprite.Sprite):
             self.rect.y = random.randint(-100, -altura_barquinhos)
             self.speedx = random.randint(-3, 3)
             self.speedy = random.randint(2, 9)
+
+
+# Classe Bullet que representa os tiros
+class Bullet(pygame.sprite.Sprite):
+    # Construtor da classe.
+    def _init_(self, assets, bottom, centerx):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite._init_(self)
+
+        self.image = assets['bullet_img']
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect()
+
+        # Coloca no lugar inicial definido em x, y do constutor
+        self.rect.centerx = centerx
+        self.rect.bottom = bottom
+        self.speedy = -10  # Velocidade fixa para cima
+
+    def update(self):
+        # A bala só se move no eixo y
+        self.rect.y += self.speedy
+
+        # Se o tiro passar do inicio da tela, morre.
+        if self.rect.bottom < 0:
+            self.kill()
