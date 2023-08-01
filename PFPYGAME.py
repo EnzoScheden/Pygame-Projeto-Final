@@ -18,9 +18,9 @@ largura_barquinhos = 50
 
 altura_barquinhos = 38 
 
-navio_largura = 50 
+navio_largura = 70
 
-navio_altura = 38
+navio_altura = 46
 
 
 
