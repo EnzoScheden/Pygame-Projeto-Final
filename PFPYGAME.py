@@ -261,7 +261,7 @@ while state != DONE:
             all_sprites.add(explosao)
 
             score += 100
-            if score % 1000 == 0:
+            if score % 10000 == 0:
                 lives += 1
 
         hits = pygame.sprite.spritecollide(player, sprite_barquinhos, True, pygame.sprite.collide_mask)
