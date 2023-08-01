@@ -90,10 +90,10 @@ class barquinho(pygame.sprite.Sprite):
         self.image = assets['barquinho']
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.x = largura  # Posição inicial no lado direito da tela
-        self.rect.y = random.randint(0, altura - altura_barquinhos)  # Posição vertical aleatória
-        self.speedx = random.randint(-8, -4)  # Velocidade negativa para mover da direita para a esquerda
-        self.speedy = 2  # Mantém a velocidade vertical como zero, pois você quer que os navios venham apenas da direita
+        self.rect.x = largura  
+        self.rect.y = random.randint(0, altura - altura_barquinhos)  
+        self.speedx = random.randint(-8, -4)  
+        self.speedy = 2  
 
 
     def update(self):
@@ -103,11 +103,10 @@ class barquinho(pygame.sprite.Sprite):
 
         # Verifica se o barquinho saiu da tela pela esquerda
         if self.rect.right < 0:
-            self.rect.x = largura  # Posição inicial no lado direito da tela
-            self.rect.y = random.randint(0, altura - altura_barquinhos)  # Posição vertical aleatória
-            self.speedx = random.randint(-3, -1)  # Velocidade negativa para mover da direita para a esquerda
-            self.speedy = 0  # Mantém a velocidade vertical como zero, pois você quer que os navios venham apenas da direita
-
+            self.rect.x = largura  
+            self.rect.y = random.randint(0, altura - altura_barquinhos)  
+            self.speedx = random.randint(-3, -1)  
+            self.speedy = 0  
 
 
 # Classe Bullet que representa os tiros
