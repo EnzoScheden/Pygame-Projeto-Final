@@ -2,11 +2,15 @@ import pygame
 
 import random 
 
+pygame.init()
+
+
 largura = 600
 
 altura = 480 
 
 tamanho = pygame.display.set_mode((largura,altura))
+
 
 
 
@@ -189,7 +193,7 @@ lives = 3
 
 # ===== Loop principal =====
 
-pygame.mixer.music.play(loops=-1)
+#pygame.mixer.music.play(loops=-1)
 while state != DONE:
     tempo.tick(FPS)
 
@@ -260,7 +264,7 @@ while state != DONE:
                 all_sprites.add(player)
 
     tamanho.fill((0, 0, 0))  # Preenche com a cor branca
-    tamanho.blit(assets['background'], (0, 0))
+    tamanho.blit(assets['fundo'], (0, 0))
     # Desenhando meteoros
     all_sprites.draw(tamanho)
 
@@ -277,4 +281,4 @@ while state != DONE:
     pygame.display.update()  # Mostra o novo frame para o jogador
 
 # ===== Finalização =====
-pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
+pygame.quit()  # Função do PyGame que finaliza os recursos utilizados 
