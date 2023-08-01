@@ -32,6 +32,7 @@ assets['barquinho'] = pygame.transform.scale(assets['barquinho'], (largura_barqu
 assets['navio'] = pygame.image.load('img/navio-de-guerra.png').convert_alpha()
 assets['navio'] = pygame.transform.scale(assets['navio'], (navio_largura, navio_altura))
 assets['bala'] = pygame.image.load('img/laserRed16.png').convert_alpha()
+assets['bala'] = pygame.transform.scale(assets['bala'], (32,23.5))
 explosion_anim = []
 for i in range(9):
     filename = 'img/regularExplosion0{}.png'.format(i)
