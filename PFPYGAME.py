@@ -38,3 +38,27 @@ for i in range(9):
 assets["explosion_anim"] = explosion_anim
 assets["score_font"] = pygame.font.Font('assets/font/PressStart2P.ttf', 28)
 
+class barco(pygame.sprite.Sprite):
+
+    def init(self, groups, assets):
+        pygame.sprite.Sprite.init(self)
+
+        self.image = assets[#imagem barco]
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect() 
+        self.rect.centerx = largura / 2 
+        self.rect.bottom  = altura  - 10 
+        self.speedx = 0
+        self.groups = groups 
+        self.assent = assets  
+
+def update(self):
+    #atualiza posição
+    self.rect.x += self.speedx 
+
+    #fica na tela pff
+    if self.rect.right > largura:
+        self.rect.right = largura 
+
+    if self.rect.left < 0:
+        self.rect.left = 0
