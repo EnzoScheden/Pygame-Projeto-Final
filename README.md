@@ -1,2 +1,2 @@
 # Pygame-Projeto-Final
-Enzo,Max,Hector
+Os autores são Enzo,Max e Hector. Estudantes de engenharia no insper realizaram um jogo chamado 'Caça Pirata' na qual por meio de um barco com uma metralhadora deve-se eliminar os barquinhos piratas que tentam indavir a embarcação. A cada vez que o barquinho colide com a embarcação uma vida é retirada. O jogo começa com três vidas, e a cada 10000 pontos recolhidos uma vida extra é adicionada. A cada barco eliminado, utilizando a barra do espaço para atirar é somado 100 pontos no score. O barco se movimenta somente no eixo y por meio das teclas W e S, respectivamente para cima e para baixo. 
