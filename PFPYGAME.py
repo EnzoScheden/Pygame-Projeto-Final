@@ -39,8 +39,8 @@ assets["score_font"] = pygame.font.Font('font/PressStart2P.ttf', 28)
 
 class navio(pygame.sprite.Sprite):
 
-    def init(self, groups, assets):
-        pygame.sprite.Sprite.init(self)
+    def __init__(self, groups, assets):
+        pygame.sprite.Sprite.__init__(self)
 
         self.image = assets['navio']
         self.mask = pygame.mask.from_surface(self.image)
@@ -78,8 +78,8 @@ class navio(pygame.sprite.Sprite):
 
     
 class barquinho(pygame.sprite.Sprite):
-    def _init_(self, assets):
-        pygame.sprite.Sprite._init_(self)
+    def __init__(self, assets):
+        pygame.sprite.Sprite.__init__(self)
 
         self.image = assets['barquinho']
         self.mask = pygame.mask.from_surface(self.image)
@@ -104,8 +104,8 @@ class barquinho(pygame.sprite.Sprite):
 # Classe Bullet que representa os tiros
 class Bullet(pygame.sprite.Sprite):
     # Construtor da classe.
-    def _init_(self, assets, bottom, centerx):
-        pygame.sprite.Sprite._init_(self)
+    def __init__(self, assets, bottom, centerx):
+        pygame.sprite.Sprite.__init__(self)
 
         self.image = assets['bullet_img']
         self.mask = pygame.mask.from_surface(self.image)
@@ -127,9 +127,9 @@ class Bullet(pygame.sprite.Sprite):
 
 class Explosion(pygame.sprite.Sprite):
     # Construtor da classe.
-    def _init_(self, center, assets):
+    def __init__(self, center, assets):
         # Construtor da classe mãe (Sprite).
-        pygame.sprite.Sprite._init_(self)
+        pygame.sprite.Sprite.__init__(self)
 
         self.explosion_anim = assets['explosion_anim']
 
