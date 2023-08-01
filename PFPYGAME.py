@@ -23,11 +23,11 @@ navio_altura = 38
 
 assets = {}
 assets['fundo'] = pygame.image.load('').convert()
-assets['barquinho'] = pygame.image.load('assets/img/meteorBrown_med1.png').convert_alpha()
-assets['barquinho'] = pygame.transform.scale(assets['meteor_img'], (largura_barquinhos, altura_barquinhos))
-assets['navio'] = pygame.image.load('assets/img/playerShip1_orange.png').convert_alpha()
-assets['navio'] = pygame.transform.scale(assets['ship_img'], (navio_largura, navio_altura))
-assets['bala'] = pygame.image.load('assets/img/laserRed16.png').convert_alpha()
+assets['barquinho'] = pygame.image.load('img/pngwing.com.png').convert_alpha()
+assets['barquinho'] = pygame.transform.scale(assets['barquinho'], (largura_barquinhos, altura_barquinhos))
+assets['navio'] = pygame.image.load('img/navio-de-guerra.png').convert_alpha()
+assets['navio'] = pygame.transform.scale(assets['navio'], (navio_largura, navio_altura))
+assets['bala'] = pygame.image.load('img/laserRed16.png').convert_alpha()
 explosion_anim = []
 for i in range(9):
     # Os arquivos de animação são numerados de 00 a 08
@@ -43,7 +43,7 @@ class barco(pygame.sprite.Sprite):
     def init(self, groups, assets):
         pygame.sprite.Sprite.init(self)
 
-        self.image = assets[#imagem barco]
+        self.image = assets['navio']
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect() 
         self.rect.centerx = largura / 2 
