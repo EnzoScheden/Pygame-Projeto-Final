@@ -52,13 +52,13 @@ class barco(pygame.sprite.Sprite):
         self.groups = groups 
         self.assent = assets  
 
-def update(self):
+    def update(self):
     #atualiza posição
-    self.rect.x += self.speedx 
+        self.rect.x += self.speedx 
 
     #fica na tela pff
-    if self.rect.right > largura:
-        self.rect.right = largura 
+        if self.rect.right > largura:
+            self.rect.right = largura 
 
-    if self.rect.left < 0:
-        self.rect.left = 0
+        if self.rect.left < 0:
+            self.rect.left = 0
