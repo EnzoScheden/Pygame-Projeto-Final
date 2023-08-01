@@ -22,7 +22,7 @@ navio_altura = 38
 
 
 assets = {}
-assets['fundo'] = pygame.image.load('').convert()
+assets['fundo'] = pygame.image.load('img/mar-visto-a-partir-de-cima.png').convert()
 assets['barquinho'] = pygame.image.load('img/pngwing.com.png').convert_alpha()
 assets['barquinho'] = pygame.transform.scale(assets['barquinho'], (largura_barquinhos, altura_barquinhos))
 assets['navio'] = pygame.image.load('img/navio-de-guerra.png').convert_alpha()
