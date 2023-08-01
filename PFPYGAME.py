@@ -181,3 +181,35 @@ class Explosion(pygame.sprite.Sprite):
                 self.image = self.explosion_anim[self.frame]
                 self.rect = self.image.get_rect()
                 self.rect.center = center
+
+tempo = pygame.time.Clock()
+FPS = 30
+
+# Criando um grupo de meteoros
+all_sprites = pygame.sprite.Group()
+sprite_barquinhos = pygame.sprite.Group()
+sprite_projetil = pygame.sprite.Group()
+groups = {}
+groups['all_sprites'] = all_sprites
+groups['sprite_barquinhos'] = sprite_barquinhos
+groups['sprite_projetil'] = sprite_projetil
+
+# Criando o jogador
+player = navio(groups, assets)
+all_sprites.add(player)
+# Criando os meteoros
+for i in range(8):
+    barco = barquinho(assets)
+    all_sprites.add(barco)
+    sprite_barquinhos.add(barco)
+
+DONE = 0
+PLAYING = 1
+EXPLODING = 2
+state = PLAYING
+
+keys_down = {}
+score = 0
+lives = 3
+
+# ===== Loop principal =====
