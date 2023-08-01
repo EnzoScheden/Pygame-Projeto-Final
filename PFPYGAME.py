@@ -48,8 +48,8 @@ class navio(pygame.sprite.Sprite):
         self.image = assets['navio']
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.centerx = largura / 2
-        self.rect.centery = altura - 10  # Posição inicial no centro inferior da tela
+        self.rect.centerx = largura / 10
+        self.rect.centery = altura /2  # Posição inicial no centro superior da tela
         self.speedy = 0  # Velocidade inicial vertical é zero (não se move no início)
         self.groups = groups
         self.assets = assets
