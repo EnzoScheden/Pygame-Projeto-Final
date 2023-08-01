@@ -79,3 +79,29 @@ class barco(pygame.sprite.Sprite):
             self.groups['all_sprites'].add(new_bullet)
             self.groups['all_bullets'].add(new_bullet)
             self.assets['pew_sound'].play()
+
+    
+class Meteor(pygame.sprite.Sprite):
+    def _init_(self, assets):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite._init_(self)
+
+        self.image = assets['barquinho']
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randint(0, largura-largura_barquinho)
+        self.rect.y = random.randint(-100, -altura_barquinho)
+        self.speedx = random.randint(-3, 3)
+        self.speedy = random.randint(2, 9)
+
+    def update(self):
+        # Atualizando a posição do meteoro
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Se o meteoro passar do final da tela, volta para cima e sorteia
+        # novas posições e velocidades
+        if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > largura:
+            self.rect.x = random.randint(0, largura-largura_barquinho)
+            self.rect.y = random.randint(-100, -altura_barquinho)
+            self.speedx = random.randint(-3, 3)
+            self.speedy = random.randint(2, 9)
