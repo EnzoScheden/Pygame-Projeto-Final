@@ -287,26 +287,26 @@ while state != DONE:
                 state = DONE
             else:
                 state = PLAYING
-                player = Ship(groups, assets)
+                player = navio(groups, assets)
                 all_sprites.add(player)
 
     # ----- Gera saídas
-    window.fill((0, 0, 0))  # Preenche com a cor branca
-    window.blit(assets['background'], (0, 0))
+    tamanho.fill((0, 0, 0))  # Preenche com a cor branca
+    tamanho.blit(assets['background'], (0, 0))
     # Desenhando meteoros
-    all_sprites.draw(window)
+    all_sprites.draw(tamanho)
 
     # Desenhando o score
     text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 0))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (largura / 2,  10)
-    window.blit(text_surface, text_rect)
+    tamanho.blit(text_surface, text_rect)
 
     # Desenhando as vidas
     text_surface = assets['score_font'].render(chr(9829) * lives, True, (255, 0, 0))
     text_rect = text_surface.get_rect()
     text_rect.bottomleft = (10, altura - 10)
-    window.blit(text_surface, text_rect)
+    tamanho.blit(text_surface, text_rect)
 
     pygame.display.update()  # Mostra o novo frame para o jogador
 
