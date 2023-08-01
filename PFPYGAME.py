@@ -30,12 +30,12 @@ assets['navio'] = pygame.transform.scale(assets['navio'], (navio_largura, navio_
 assets['bala'] = pygame.image.load('img/laserRed16.png').convert_alpha()
 explosion_anim = []
 for i in range(9):
-    filename = 'assets/img/regularExplosion0{}.png'.format(i)
+    filename = 'img/regularExplosion0{}.png'.format(i)
     img = pygame.image.load(filename).convert()
     img = pygame.transform.scale(img, (32, 32))
     explosion_anim.append(img)
 assets["explosion_anim"] = explosion_anim
-assets["score_font"] = pygame.font.Font('assets/font/PressStart2P.ttf', 28)
+assets["score_font"] = pygame.font.Font('font/PressStart2P.ttf', 28)
 
 class navio(pygame.sprite.Sprite):
 
