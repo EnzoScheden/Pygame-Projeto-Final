@@ -253,7 +253,7 @@ while state != DONE:
         hits = pygame.sprite.groupcollide(sprite_barquinhos, sprite_projetil, True, True, pygame.sprite.collide_mask)
         for meteor in hits: 
             #assets['destroy_sound'].play()
-            m = barco(assets)
+            m = barquinho(assets)
             all_sprites.add(m)
             sprite_barquinhos.add(m)
 
