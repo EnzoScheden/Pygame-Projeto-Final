@@ -62,3 +62,20 @@ class barco(pygame.sprite.Sprite):
 
         if self.rect.left < 0:
             self.rect.left = 0
+
+    
+    def shoot(self):
+        # Verifica se pode atirar
+        now = pygame.time.get_ticks()
+        # Verifica quantos ticks se passaram desde o último tiro.
+        elapsed_ticks = now - self.last_shot
+
+        # Se já pode atirar novamente...
+        if elapsed_ticks > self.shoot_ticks:
+            # Marca o tick da nova imagem.
+            self.last_shot = now
+            # A nova bala vai ser criada logo acima e no centro horizontal da nave
+            new_bullet = Bullet(self.assets, self.rect.top, self.rect.centerx)
+            self.groups['all_sprites'].add(new_bullet)
+            self.groups['all_bullets'].add(new_bullet)
+            self.assets['pew_sound'].play()
