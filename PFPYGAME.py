@@ -49,25 +49,24 @@ class navio(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centerx = largura / 2
-        self.rect.bottom = altura - 10
-        self.speedx = 0
+        self.rect.centery = altura - 10  # Posição inicial no centro inferior da tela
+        self.speedy = 0  # Velocidade inicial vertical é zero (não se move no início)
         self.groups = groups
-        self.assets = assets  # Corrected 'assent' to 'assets'
-        
-        # New attributes for shooting
+        self.assets = assets
+
+        # Novos atributos para atirar
         self.last_shot = pygame.time.get_ticks()
-        self.shoot_ticks = 500  # Adjust the value as needed
+        self.shoot_ticks = 500  # Ajuste o valor conforme necessário
 
     def update(self):
-        # atualiza posição
-        self.rect.x += self.speedx
+        # Atualiza posição vertical
+        self.rect.y += self.speedy
 
-        # fica na tela
-        if self.rect.right > largura:
-            self.rect.right = largura
-
-        if self.rect.left < 0:
-            self.rect.left = 0
+        # Mantém o navio na tela verticalmente
+        if self.rect.top < 0:
+            self.rect.top = 0
+        if self.rect.bottom > altura:
+            self.rect.bottom = altura
 
     def shoot(self):
         # Verifica se pode atirar
@@ -81,6 +80,7 @@ class navio(pygame.sprite.Sprite):
             self.groups['all_sprites'].add(new_bullet)
             self.groups['sprite_projetil'].add(new_bullet)
             self.assets['pew_sound'].play()
+
 
     
 class barquinho(pygame.sprite.Sprite):
@@ -198,14 +198,20 @@ lives = 3
 # ===== Loop principal =====
 
 #pygame.mixer.music.play(loops=-1)
+# ... (código existente)
+
+# ===== Loop principal =====
+#pygame.mixer.music.play(loops=-1)
+
 while state != DONE:
     tempo.tick(FPS)
 
     # ----- Trata eventos
     for event in pygame.event.get():
-        # ----- Verifica consequências
+        # Verifica consequências
         if event.type == pygame.QUIT:
             state = DONE
+
         # Só verifica o teclado se está no estado de jogo
         if state == PLAYING:
             # Verifica se apertou alguma tecla.
@@ -216,8 +222,11 @@ while state != DONE:
                     player.speedx -= 8
                 if event.key == pygame.K_RIGHT:
                     player.speedx += 8
-                if event.key == pygame.K_SPACE:
-                    player.shoot()
+                if event.key == pygame.K_w:  # Tecla "W" para mover para cima
+                    player.speedy -= 8
+                if event.key == pygame.K_s:  # Tecla "S" para mover para baixo
+                    player.speedy += 8
+
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
                 # Dependendo da tecla, altera a velocidade.
@@ -226,6 +235,13 @@ while state != DONE:
                         player.speedx += 8
                     if event.key == pygame.K_RIGHT:
                         player.speedx -= 8
+                    if event.key == pygame.K_w:  # Tecla "W" solta para mover para cima
+                        player.speedy += 8
+                    if event.key == pygame.K_s:  # Tecla "S" solta para mover para baixo
+                        player.speedy -= 8
+
+
+
 
     # ----- Atualiza estado do jogo
     # Atualizando a posição dos meteoros
