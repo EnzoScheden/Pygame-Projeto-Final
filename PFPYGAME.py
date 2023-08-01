@@ -24,9 +24,9 @@ navio_altura = 38
 assets = {}
 assets['fundo'] = pygame.image.load('').convert()
 assets['barquinho'] = pygame.image.load('assets/img/meteorBrown_med1.png').convert_alpha()
-assets['barquinho'] = pygame.transform.scale(assets['meteor_img'], (METEOR_WIDTH, METEOR_HEIGHT))
+assets['barquinho'] = pygame.transform.scale(assets['meteor_img'], (largura_barquinhos, altura_barquinhos))
 assets['navio'] = pygame.image.load('assets/img/playerShip1_orange.png').convert_alpha()
-assets['navio'] = pygame.transform.scale(assets['ship_img'], (SHIP_WIDTH, SHIP_HEIGHT))
+assets['navio'] = pygame.transform.scale(assets['ship_img'], (navio_largura, navio_altura))
 assets['bala'] = pygame.image.load('assets/img/laserRed16.png').convert_alpha()
 explosion_anim = []
 for i in range(9):
