@@ -42,31 +42,33 @@ assets["explosion_anim"] = explosion_anim
 assets["score_font"] = pygame.font.Font('font/PressStart2P.ttf', 28)
 
 class navio(pygame.sprite.Sprite):
-
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
 
         self.image = assets['navio']
         self.mask = pygame.mask.from_surface(self.image)
-        self.rect = self.image.get_rect() 
-        self.rect.centerx = largura / 2 
-        self.rect.bottom  = altura  - 10 
+        self.rect = self.image.get_rect()
+        self.rect.centerx = largura / 2
+        self.rect.bottom = altura - 10
         self.speedx = 0
-        self.groups = groups 
-        self.assent = assets  
+        self.groups = groups
+        self.assets = assets  # Corrected 'assent' to 'assets'
+        
+        # New attributes for shooting
+        self.last_shot = pygame.time.get_ticks()
+        self.shoot_ticks = 500  # Adjust the value as needed
 
     def update(self):
-    #atualiza posição
-        self.rect.x += self.speedx 
+        # atualiza posição
+        self.rect.x += self.speedx
 
-    #fica na tela pff
+        # fica na tela
         if self.rect.right > largura:
-            self.rect.right = largura 
+            self.rect.right = largura
 
         if self.rect.left < 0:
             self.rect.left = 0
 
-    
     def shoot(self):
         # Verifica se pode atirar
         now = pygame.time.get_ticks()
@@ -77,7 +79,7 @@ class navio(pygame.sprite.Sprite):
             self.last_shot = now
             new_bullet = Bullet(self.assets, self.rect.top, self.rect.centerx)
             self.groups['all_sprites'].add(new_bullet)
-            self.groups['all_bullets'].add(new_bullet)
+            self.groups['sprite_projetil'].add(new_bullet)
             self.assets['pew_sound'].play()
 
     
@@ -244,7 +246,7 @@ while state != DONE:
 
         hits = pygame.sprite.spritecollide(player, sprite_barquinhos, True, pygame.sprite.collide_mask)
         if len(hits) > 0:
-            assets['boom_sound'].play()
+           
             player.kill()
             lives -= 1
             explosao = Explosion(player.rect.center, assets)
