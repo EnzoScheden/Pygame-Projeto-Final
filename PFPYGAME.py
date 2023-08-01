@@ -79,7 +79,7 @@ class navio(pygame.sprite.Sprite):
             new_bullet = Bullet(self.assets, self.rect.top, self.rect.centerx)
             self.groups['all_sprites'].add(new_bullet)
             self.groups['sprite_projetil'].add(new_bullet)
-            self.assets['pew_sound'].play()
+            #self.assets['pew_sound'].play()
 
 
     
@@ -115,21 +115,21 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self, assets, bottom, centerx):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets['bullet_img']
+        self.image = assets['bala']
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
 
         self.rect.centerx = centerx
         self.rect.bottom = bottom
-        self.speedy = -10  # Velocidade fixa para cima
+        self.speedx = 10  # Velocidade fixa para cima
 
     def update(self):
         # A bala só se move no eixo y
-        self.rect.y += self.speedy
+        self.rect.x += self.speedx
 
-        if self.rect.bottom < 0:
+        if self.rect.bottom < 0: 
             self.kill()
-
+ 
 
 
 
@@ -226,6 +226,8 @@ while state != DONE:
                     player.speedy -= 8
                 if event.key == pygame.K_s:  # Tecla "S" para mover para baixo
                     player.speedy += 8
+                if event.key == pygame.K_SPACE:
+                    player.shoot()
 
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
@@ -250,7 +252,7 @@ while state != DONE:
     if state == PLAYING:
         hits = pygame.sprite.groupcollide(sprite_barquinhos, sprite_projetil, True, True, pygame.sprite.collide_mask)
         for meteor in hits: 
-            assets['destroy_sound'].play()
+            #assets['destroy_sound'].play()
             m = barco(assets)
             all_sprites.add(m)
             sprite_barquinhos.add(m)
