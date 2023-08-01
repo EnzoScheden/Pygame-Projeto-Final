@@ -100,7 +100,7 @@ class barquinho(pygame.sprite.Sprite):
         self.rect.y += self.speedy
         # Se o meteoro passar do final da tela, volta para cima e sorteia
         # novas posições e velocidades
-        if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > largura:
+        if self.rect.top > altura or self.rect.right < 0 or self.rect.left > largura:
             self.rect.x = random.randint(0, largura-largura_barquinhos)
             self.rect.y = random.randint(-100, -altura_barquinhos)
             self.speedx = random.randint(-3, 3)
