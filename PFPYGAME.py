@@ -93,8 +93,8 @@ class barquinho(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = largura  
         self.rect.y = random.randint(0, altura - altura_barquinhos)  
-        self.speedx = random.randint(-8, -4)  
-        self.speedy = 2  
+        self.speedx = random.randint(-20,-8)  
+        self.speedy = 3  
 
 
     def update(self):
@@ -219,10 +219,7 @@ while state != DONE:
             if event.type == pygame.KEYDOWN:
                 # Dependendo da tecla, altera a velocidade.
                 keys_down[event.key] = True
-                if event.key == pygame.K_LEFT:
-                    player.speedx -= 8
-                if event.key == pygame.K_RIGHT:
-                    player.speedx += 8
+                
                 if event.key == pygame.K_w:  # Tecla "W" para mover para cima
                     player.speedy -= 8
                 if event.key == pygame.K_s:  # Tecla "S" para mover para baixo
@@ -234,10 +231,7 @@ while state != DONE:
             if event.type == pygame.KEYUP:
                 # Dependendo da tecla, altera a velocidade.
                 if event.key in keys_down and keys_down[event.key]:
-                    if event.key == pygame.K_LEFT:
-                        player.speedx += 8
-                    if event.key == pygame.K_RIGHT:
-                        player.speedx -= 8
+                  
                     if event.key == pygame.K_w:  # Tecla "W" solta para mover para cima
                         player.speedy += 8
                     if event.key == pygame.K_s:  # Tecla "S" solta para mover para baixo
