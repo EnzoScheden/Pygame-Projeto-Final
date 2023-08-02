@@ -81,7 +81,7 @@ def tela_fim():
 
         pygame.display.update()
 
-
+#animação da explosão
 explosion_anim = []
 for i in range(9):
     filename = 'img/regularExplosion0{}.png'.format(i)
@@ -90,7 +90,7 @@ for i in range(9):
     explosion_anim.append(img)
 assets["explosion_anim"] = explosion_anim
 assets["score_font"] = pygame.font.Font('font/PressStart2P.ttf', 28)
-
+#classe navio
 class navio(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
@@ -133,7 +133,7 @@ class navio(pygame.sprite.Sprite):
             
 
 
-    
+#classe dos baruinhos 
 class barquinho(pygame.sprite.Sprite):
     def __init__(self, assets):
         pygame.sprite.Sprite.__init__(self)
@@ -183,7 +183,7 @@ class Bullet(pygame.sprite.Sprite):
  
 
 
-
+#classe explosão
 class Explosion(pygame.sprite.Sprite):
     # Construtor da classe.
     def __init__(self, center, assets):
@@ -248,8 +248,6 @@ lives = 3
 
 # ===== Loop principal =====
 
-#pygame.mixer.music.play(loops=-1)
-# ... (código existente)
 
 # ===== Loop principal =====
 #pygame.mixer.music.play(loops=-1)
@@ -294,18 +292,17 @@ while state != DONE:
 
 
     # ----- Atualiza estado do jogo
-    # Atualizando a posição dos meteoros
+    # Atualizando a posição dos barquinhos
     all_sprites.update()
 
     if state == PLAYING:
         hits = pygame.sprite.groupcollide(sprite_barquinhos, sprite_projetil, True, True, pygame.sprite.collide_mask)
-        for meteor in hits: 
-            #assets['destroy_sound'].play()
+        for pirat in hits: 
             m = barquinho(assets)
             all_sprites.add(m)
             sprite_barquinhos.add(m)
 
-            explosao = Explosion(meteor.rect.center, assets)
+            explosao = Explosion(pirat.rect.center, assets)
             all_sprites.add(explosao)
 
             score += 100
@@ -335,7 +332,7 @@ while state != DONE:
 
     tamanho.fill((0, 0, 0))  # Preenche com a cor branca
     tamanho.blit(assets['fundo'], (0, 0))
-    # Desenhando meteoros
+    
     all_sprites.draw(tamanho)
 
     text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 255))
