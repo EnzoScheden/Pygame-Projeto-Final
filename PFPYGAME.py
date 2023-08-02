@@ -30,7 +30,7 @@ navio_altura = 46
 
 
 assets = {}
-assets['tiro_sound'] = pygame.mixer.Sound('sons/9mm-pistol-shot-6349.wav')
+assets['tiro_sound'] = pygame.mixer.Sound('sons/tiro.wav')
 assets['fundo_sound'] = pygame.mixer.Sound('sons/harbour_seagulls_day_2-22341.wav')
 assets['fundo'] = pygame.image.load('img/mar-visto-a-partir-de-cima.jpg').convert()
 assets['barquinho'] = pygame.image.load('img/pngwing.com.png').convert_alpha()
