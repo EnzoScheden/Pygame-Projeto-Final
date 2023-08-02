@@ -33,6 +33,28 @@ assets['navio'] = pygame.image.load('img/navio-de-guerra.png').convert_alpha()
 assets['navio'] = pygame.transform.scale(assets['navio'], (navio_largura, navio_altura))
 assets['bala'] = pygame.image.load('img/laserRed16.png').convert_alpha()
 assets['bala'] = pygame.transform.scale(assets['bala'], (32,23.5))
+
+def tela_inicio():
+    inicio = True
+    while inicio:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                inicio = False
+
+        tamanho.fill((0, 0, 255))  # Preenche com a cor azul
+        texto_inicio = assets['score_font'].render("Aperte espaço para começar", True, (255, 255, 255))
+        texto_rect = texto_inicio.get_rect()
+        texto_rect.center = (largura / 2, altura / 2)
+        tamanho.blit(texto_inicio, texto_rect)
+
+        pygame.display.update()
+
+
+
 explosion_anim = []
 for i in range(9):
     filename = 'img/regularExplosion0{}.png'.format(i)
@@ -203,6 +225,9 @@ lives = 3
 
 # ===== Loop principal =====
 #pygame.mixer.music.play(loops=-1)
+
+tela_inicio()
+
 
 while state != DONE:
     tempo.tick(FPS)
