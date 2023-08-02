@@ -20,7 +20,7 @@ tamanho = pygame.display.set_mode((largura,altura))
 #definindo tamanho dos objetos 
 largura_barquinhos = 50
 
-altura_barquinhos = 38 
+altura_barquinhos = 42
 
 navio_largura = 70
 
@@ -107,6 +107,7 @@ class navio(pygame.sprite.Sprite):
         # Novos atributos para atirar
         self.last_shot = pygame.time.get_ticks()
         self.shoot_ticks = 500  # Ajuste o valor conforme necessário
+        self.shoot_sound = assets['tiro_sound']
 
     def update(self):
         # Atualiza posição vertical
@@ -126,10 +127,12 @@ class navio(pygame.sprite.Sprite):
         # Se já pode atirar novamente...
         if elapsed_ticks > self.shoot_ticks:
             self.last_shot = now
+            # Reproduz o som do tiro
+            self.shoot_sound.play()
             new_bullet = Bullet(self.assets, self.rect.top, self.rect.centerx)
             self.groups['all_sprites'].add(new_bullet)
             self.groups['sprite_projetil'].add(new_bullet)
-            assets['tiro_sound'].play()
+            
             
 
 
@@ -246,13 +249,6 @@ keys_down = {}
 score = 0
 lives = 3
 
-# ===== Loop principal =====
-
-#pygame.mixer.music.play(loops=-1)
-# ... (código existente)
-
-# ===== Loop principal =====
-#pygame.mixer.music.play(loops=-1)
 
 tela_inicio()
 
@@ -299,13 +295,13 @@ while state != DONE:
 
     if state == PLAYING:
         hits = pygame.sprite.groupcollide(sprite_barquinhos, sprite_projetil, True, True, pygame.sprite.collide_mask)
-        for meteor in hits: 
-            #assets['destroy_sound'].play()
+        for k in hits: 
+            
             m = barquinho(assets)
             all_sprites.add(m)
             sprite_barquinhos.add(m)
 
-            explosao = Explosion(meteor.rect.center, assets)
+            explosao = Explosion(k.rect.center, assets)
             all_sprites.add(explosao)
 
             score += 100
@@ -335,7 +331,7 @@ while state != DONE:
 
     tamanho.fill((0, 0, 0))  # Preenche com a cor branca
     tamanho.blit(assets['fundo'], (0, 0))
-    # Desenhando meteoros
+    # Desenhando os barquinhos
     all_sprites.draw(tamanho)
 
     text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 255))
