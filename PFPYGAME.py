@@ -8,7 +8,7 @@ pygame.init()
 
 pygame.mixer.init()
 
-
+#definindo tamanho da tela e jg
 largura = 1000
 
 altura = 480 
@@ -17,7 +17,7 @@ tamanho = pygame.display.set_mode((largura,altura))
 
 
 
-
+#definindo tamanho dos objetos 
 largura_barquinhos = 50
 
 altura_barquinhos = 38 
@@ -28,7 +28,7 @@ navio_altura = 46
 
 
 
-
+#assests 
 assets = {}
 assets['tiro_sound'] = pygame.mixer.Sound('sons/tiro.wav')
 assets['fundo_sound'] = pygame.mixer.Sound('sons/harbour_seagulls_day_2-22341.wav')
@@ -42,6 +42,7 @@ assets['bala'] = pygame.transform.scale(assets['bala'], (32,23.5))
 assets['tela_inicio'] = pygame.image.load('img/tela inicial jogo pygame.png').convert()
 assets['tela_inicio'] = pygame.transform.scale(assets['tela_inicio'], (1000, 480))
 
+#tela inicial
 def tela_inicio():
     inicio = True
     while inicio:
