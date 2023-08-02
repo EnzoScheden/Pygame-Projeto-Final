@@ -1,8 +1,12 @@
 import pygame 
 
+import pygame.mixer
+
 import random 
 
 pygame.init()
+
+pygame.mixer.init()
 
 
 largura = 1000
@@ -26,6 +30,8 @@ navio_altura = 46
 
 
 assets = {}
+assets['tiro_sound'] = pygame.mixer.Sound('sons/9mm-pistol-shot-6349.wav')
+assets['fundo_sound'] = pygame.mixer.Sound('sons/harbour_seagulls_day_2-22341.wav')
 assets['fundo'] = pygame.image.load('img/mar-visto-a-partir-de-cima.jpg').convert()
 assets['barquinho'] = pygame.image.load('img/pngwing.com.png').convert_alpha()
 assets['barquinho'] = pygame.transform.scale(assets['barquinho'], (largura_barquinhos, altura_barquinhos))
@@ -48,6 +54,7 @@ def tela_inicio():
                 inicio = False
 
         tamanho.blit(assets['tela_inicio'],(0,0))
+        assets['fundo_sound'].play()
         
 
         pygame.display.update()
@@ -116,7 +123,8 @@ class navio(pygame.sprite.Sprite):
             new_bullet = Bullet(self.assets, self.rect.top, self.rect.centerx)
             self.groups['all_sprites'].add(new_bullet)
             self.groups['sprite_projetil'].add(new_bullet)
-            #self.assets['pew_sound'].play()
+            assets['tiro_sound'].play()
+            
 
 
     
