@@ -249,16 +249,8 @@ keys_down = {}
 score = 0
 lives = 3
 
-# ===== Loop principal =====
-
-#pygame.mixer.music.play(loops=-1)
-# ... (código existente)
-
-# ===== Loop principal =====
-#pygame.mixer.music.play(loops=-1)
 
 tela_inicio()
-
 
 while state != DONE:
     tempo.tick(FPS)
@@ -302,13 +294,12 @@ while state != DONE:
 
     if state == PLAYING:
         hits = pygame.sprite.groupcollide(sprite_barquinhos, sprite_projetil, True, True, pygame.sprite.collide_mask)
-        for meteor in hits: 
-            #assets['destroy_sound'].play()
+        for k in hits: 
             m = barquinho(assets)
             all_sprites.add(m)
             sprite_barquinhos.add(m)
 
-            explosao = Explosion(meteor.rect.center, assets)
+            explosao = Explosion(k.rect.center, assets)
             all_sprites.add(explosao)
 
             score += 100
@@ -338,7 +329,7 @@ while state != DONE:
 
     tamanho.fill((0, 0, 0))  # Preenche com a cor branca
     tamanho.blit(assets['fundo'], (0, 0))
-    # Desenhando meteoros
+    # Desenhando barquinhos
     all_sprites.draw(tamanho)
 
     text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 255))
