@@ -93,8 +93,8 @@ class barquinho(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = largura  
         self.rect.y = random.randint(0, altura - altura_barquinhos)  
-        self.speedx = random.randint(-20,-8)  
-        self.speedy = 3  
+        self.speedx = random.randint(-20,-14)  
+        self.speedy = random.randint(-3,3) 
 
 
     def update(self):
@@ -106,8 +106,8 @@ class barquinho(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.rect.x = largura  
             self.rect.y = random.randint(0, altura - altura_barquinhos)  
-            self.speedx = random.randint(-3, -1)  
-            self.speedy = 0  
+            self.speedx = random.randint(-20, -14)  
+            self.speedy = random.randint(-3,3)  
 
 
 # Classe Bullet que representa os tiros
