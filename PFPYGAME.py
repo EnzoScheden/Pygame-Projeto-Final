@@ -33,6 +33,8 @@ assets['navio'] = pygame.image.load('img/navio-de-guerra.png').convert_alpha()
 assets['navio'] = pygame.transform.scale(assets['navio'], (navio_largura, navio_altura))
 assets['bala'] = pygame.image.load('img/laserRed16.png').convert_alpha()
 assets['bala'] = pygame.transform.scale(assets['bala'], (32,23.5))
+assets['tela_inicio'] = pygame.image.load('img/tela inicial jogo pygame.png').convert()
+assets['tela_inicio'] = pygame.transform.scale(assets['tela_inicio'], (1000, 480))
 
 def tela_inicio():
     inicio = True
@@ -45,11 +47,8 @@ def tela_inicio():
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 inicio = False
 
-        tamanho.fill((0, 0, 255))  # Preenche com a cor azul
-        texto_inicio = assets['score_font'].render("Aperte espaço para começar", True, (255, 255, 255))
-        texto_rect = texto_inicio.get_rect()
-        texto_rect.center = (largura / 2, altura / 2)
-        tamanho.blit(texto_inicio, texto_rect)
+        tamanho.blit(assets['tela_inicio'],(0,0))
+        
 
         pygame.display.update()
 
