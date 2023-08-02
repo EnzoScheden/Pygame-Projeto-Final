@@ -54,12 +54,17 @@ def tela_inicio():
                 inicio = False
 
         tamanho.blit(assets['tela_inicio'],(0,0))
-        assets['fundo_sound'].play()
         
 
         pygame.display.update()
+
+        if inicio:
+            assets['fundo_sound'].play()
+
+
 #função tela fim 
 def tela_fim():
+    assets['fundo_sound'].stop()
     fim = True
     while fim:
         for event in pygame.event.get():
