@@ -51,7 +51,22 @@ def tela_inicio():
         
 
         pygame.display.update()
+#função tela fim 
+def tela_fim():
+    fim = True
+    while fim:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
 
+        tamanho.fill((0, 0, 0))
+        game_over_text = assets['score_font'].render("GAME OVER", True, (255, 0, 0))
+        game_over_rect = game_over_text.get_rect()
+        game_over_rect.center = (largura / 2, altura / 2)
+        tamanho.blit(game_over_text, game_over_rect)
+
+        pygame.display.update()
 
 
 explosion_anim = []
@@ -319,7 +334,12 @@ while state != DONE:
     text_rect.bottomleft = (10, altura - 10)
     tamanho.blit(text_surface, text_rect)
 
+    
+
     pygame.display.update()  # Mostra o novo frame para o jogador
+
+    if state == DONE:
+        tela_fim()
 
 # ===== Finalização =====
 pygame.quit()  # Função do PyGame que finaliza os recursos utilizados 
