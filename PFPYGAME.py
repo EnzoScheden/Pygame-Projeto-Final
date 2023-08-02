@@ -73,7 +73,7 @@ def tela_fim():
                 quit()
 
         tamanho.fill((0, 0, 0))
-        game_over_text = assets['score_font'].render("GAME OVER", True, (255, 0, 0))
+        game_over_text = assets['score_font'].render("GAME OVER! FECHE O JOGO", True, (255, 0, 0))
         game_over_rect = game_over_text.get_rect()
         game_over_rect.center = (largura / 2, altura / 2)
         tamanho.blit(game_over_text, game_over_rect)
@@ -337,7 +337,7 @@ while state != DONE:
     # Desenhando meteoros
     all_sprites.draw(tamanho)
 
-    text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 0))
+    text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 255))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (largura / 2,  10)
     tamanho.blit(text_surface, text_rect)
